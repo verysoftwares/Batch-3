@@ -79,7 +79,7 @@ end
 program={}
 
 function plan(hw_dt)
-    --if not audio.plan:isPlaying() then audio.plan:play() end
+    if not audio.plan:isPlaying() then audio.plan:play() end
     leftheld=left
     left=love.mouse.isDown(1)
     if not left then leftheld2=nil end
@@ -121,7 +121,7 @@ function plan(hw_dt)
         if love.keyboard.isDown('return') or (left and not leftheld and AABB(mox,moy,1,1,leftedge+6*96+24+12,24*36-128,96,96)) then
         love.update=execute
         old_prog=#program
-        --audio.plan:stop(); audio.execute:play()
+        audio.plan:stop(); audio.execute:play()
         end
     end
 
@@ -370,8 +370,8 @@ function end_turn()
     old_prog=nil
     if level~='inf' and hearts>0 then level=level+1; if level>5 then level='inf' end end
     leftheld2=true
-    --audio.execute:stop()
-    --if hearts>0 then audio.plan:play() end
+    audio.execute:stop()
+    if hearts>0 then audio.plan:play() end
 end
 
 function dialogue()
